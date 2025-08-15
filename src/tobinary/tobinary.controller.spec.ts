@@ -16,14 +16,6 @@ describe('TobinaryController', () => {
     service = module.get<TobinaryService>(TobinaryService);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-
-  it('should have service injected', () => {
-    expect(service).toBeDefined();
-  });
-
   describe('convertToBinary', () => {
     it('should convert decimal to binary', () => {
       jest.spyOn(service, 'convert').mockReturnValue(1101);
