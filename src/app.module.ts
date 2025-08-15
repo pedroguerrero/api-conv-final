@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TobinaryModule } from './tobinary/tobinary.module';
+import { TodecimalModule } from './todecimal/todecimal.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [TobinaryModule, TodecimalModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
