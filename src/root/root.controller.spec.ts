@@ -12,7 +12,10 @@ describe('RootController', () => {
     controller = module.get<RootController>(RootController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('root', () => {
+    it('should return an object', () => {
+      const response = controller.root();
+      expect(response).toEqual({ title: 'Conversor' });
+    });
   });
 });
