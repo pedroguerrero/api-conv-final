@@ -13,6 +13,15 @@ describe('Google Search Test', () => {
 
     const chromeBinary = '/usr/bin/chromium-browser';
 
+    options.addArguments(
+      '--headless=new',
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--window-size=1366,768',
+      '--disable-gpu',
+      '--disable-infobars',
+    );
+
     options.setChromeBinaryPath(chromeBinary);
 
     driver = await new Builder()
