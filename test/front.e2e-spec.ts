@@ -1,6 +1,10 @@
 import chrome from 'selenium-webdriver/chrome';
 import { Builder, By, Key, WebDriver } from 'selenium-webdriver';
 
+function mySleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 describe('Google Search Test', () => {
   let driver: WebDriver;
 
@@ -28,8 +32,12 @@ describe('Google Search Test', () => {
       const decimalBox = await driver.findElement(By.id('decimalInput'));
       await decimalBox.sendKeys('13', Key.RETURN);
 
+      await mySleep(500);
+
       const btnConvert = await driver.findElement(By.id('btnConvertirDecimal'));
       await btnConvert.click();
+
+      await mySleep(500);
 
       const binaryBox = await driver.findElement(By.id('binaryResult'));
       const binaryValue = await binaryBox.getAttribute('value');
