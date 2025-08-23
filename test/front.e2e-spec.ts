@@ -13,7 +13,6 @@ describe('Google Search Test', () => {
 
     const chromeBinary = '/usr/bin/chromium-browser';
 
-    options.addArguments('--no-sandbox', '--disable-gpu', '--headless=new');
     options.setChromeBinaryPath(chromeBinary);
 
     driver = await new Builder()
@@ -51,8 +50,12 @@ describe('Google Search Test', () => {
       const binaryBox = await driver.findElement(By.id('binaryInput'));
       await binaryBox.sendKeys('1101', Key.RETURN);
 
+      await mySleep(500);
+
       const btnConvert = await driver.findElement(By.id('btnConvertirBinary'));
       await btnConvert.click();
+
+      await mySleep(500);
 
       const decimalBox = await driver.findElement(By.id('decimalResult'));
       const decimalValue = await decimalBox.getAttribute('value');
