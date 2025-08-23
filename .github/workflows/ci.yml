@@ -47,7 +47,9 @@ jobs:
           done
 
       - name: Install browser
-        run: apt install -y chromium-browser chromium-chromedriver
+        run: |
+          apt update
+          apt install -y chromium-browser chromium-chromedriver
 
       - name: Run e2e tests
         run: npm run test:e2e
