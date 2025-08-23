@@ -1,10 +1,21 @@
+import chrome from 'selenium-webdriver/chrome';
 import { Builder, By, Key, WebDriver } from 'selenium-webdriver';
 
 describe('Google Search Test', () => {
   let driver: WebDriver;
 
   beforeAll(async () => {
-    driver = await new Builder().forBrowser('chrome').build(); // Or 'firefox', etc.
+    const options = new chrome.Options();
+
+    const chromeBinary = '/usr/bin/chromium-browser';
+
+    options.addArguments('--no-sandbox', '--disable-gpu', '--headless=new');
+    options.setChromeBinaryPath(chromeBinary);
+
+    driver = await new Builder()
+      .forBrowser('chrome')
+      .setChromeOptions(options)
+      .build();
   });
 
   afterAll(async () => {
