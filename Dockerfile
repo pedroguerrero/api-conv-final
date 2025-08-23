@@ -11,6 +11,7 @@ COPY --chown=app:app --from=base /app/dist /app/dist
 USER app
 COPY --chown=app:app package.json .
 COPY --chown=app:app package-lock.json .
+COPY --chown=app:app views /app/views
 RUN npm install --omit=dev
 CMD ["npm", "run", "start:prod"]
 EXPOSE 3000
